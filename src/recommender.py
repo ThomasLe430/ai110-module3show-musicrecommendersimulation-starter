@@ -15,8 +15,8 @@ class Song:
     energy: float
     tempo_bpm: float
     valence: float
-    danceability: float
-    acousticness: float
+    is_instrumental: bool
+    duration: int
 
 @dataclass
 class UserProfile:
@@ -24,10 +24,15 @@ class UserProfile:
     Represents a user's taste preferences.
     Required by tests/test_recommender.py
     """
-    favorite_genre: str
-    favorite_mood: str
+    favorite_artist: str
+    favorite_genres: List[str]
+    favorite_moods: List[str]
     target_energy: float
-    likes_acoustic: bool
+    target_bpm: float
+    target_valence: float
+    likes_instrumental: bool
+    target_duration: int
+    
 
 class Recommender:
     """
