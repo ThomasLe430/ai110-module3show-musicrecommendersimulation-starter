@@ -30,8 +30,8 @@ class UserProfile:
     target_energy: float
     target_bpm: float
     target_valence: float
-    likes_instrumental: bool
-    target_duration: int
+    likes_instrumental: Optional[bool] = None
+    target_duration: Optional[int] = None
     
 
 class Recommender:

@@ -29,6 +29,8 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+Real recommendation systems work by quantifying items as vectors and using computational/mathematical algorithms to compute items that match user's preferences. Each item (song or YT video) is turned into feature vectors and a neural network is trained to learn these numerical representations. The scoring function often uses cosine similarity or L2 distance (I am researching these in my lab!). Context based information such as whats trending and what others users enjoy is also taken into consideration - and a hybrid approach (content + collaborative) is the norm for many systems. 
+
 My design compares song features with users preferences to calculate a recommendation score. The song features I am using include general vibes (artist, genre, mood) and audio characteristics (energy, tempo, valence, instrumental, duration). The UserProfile dataclass stores the user's favorite artist and favorite genres/moods.Additionally, the class stores target energy, tempo, valence, duration, and instrumental preference. 
 
 My recommender computes a score for each song based on the feature type, where categorical features are checked for equality and numerical features are used to compute a distance metric. Each feature also has a weighting, where favorite vibes will be weighted more than numerical features. In order choose which songs to recommend, the system will choose the ones with the highest score. 
