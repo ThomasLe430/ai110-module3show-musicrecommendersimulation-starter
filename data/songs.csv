@@ -9,3 +9,13 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,isInstrumental,duration
 8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,true,202
 9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,true,178
 10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,false,199
+11,Super Shy,NewJeans,k-pop,happy,0.88,133,0.86,false,154
+12,Gurenge,LiSA,j-rock,intense,0.89,149,0.55,false,269
+13,Megalovania,Toby Fox,electronic,intense,0.95,140,0.60,true,152
+14,To Zanarkand,Nobuo Uematsu,classical,melancholic,0.20,66,0.30,true,253
+15,Dynamite,BTS,k-pop,happy,0.80,114,0.90,false,199
+16,One Summer's Day,Joe Hisaishi,orchestral,peaceful,0.18,68,0.55,true,145
+17,Gerudo Valley,Koji Kondo,world,adventurous,0.65,120,0.50,true,138
+18,Kick Back,Kenshi Yonezu,j-rock,energetic,0.87,165,0.62,false,190
+19,Sweden,C418,ambient,peaceful,0.15,65,0.45,true,231
+20,Tank!,The Seatbelts,jazz,energetic,0.85,175,0.70,true,132
