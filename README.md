@@ -29,6 +29,18 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+My design compares song features with users preferences to calculate a recommendation score. The song features I am using include general vibes (artist, genre, mood) and audio characteristics (energy, tempo, valence, instrumental, duration). The UserProfile dataclass stores the user's favorite artist and favorite genres/moods. Additionally, the class stores target energy, tempo, valence, duration, and instrumental preference. My recommender computes a score for each song based on the feature type, where categorical features are checked for equality and numerical features are used to compute a distance metric. Each feature also has a weighting, where favorite vibes will be weighted more than numerical features. In order choose which songs to recommend, the system will choose the ones with the highest score. 
+
+  title: str
+    artist: str
+    genre: str
+    mood: str
+    energy: float
+    tempo_bpm: float
+    valence: float
+    is_instrumental: bool
+    duration: int
+
 ---
 
 ## Getting Started
