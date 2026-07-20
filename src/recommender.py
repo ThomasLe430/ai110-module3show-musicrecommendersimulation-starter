@@ -98,8 +98,16 @@ NUMERICAL_RANGES = {
 }
 
 # If numerical features are scored above 0.7 --> Feature added
-# to explanation list 
+# to explanation list
 NUMERICAL_PREF_THRESHOLD = 0.7
+
+# Short display labels for numerical features in explanations.
+NUMERICAL_LABELS = {
+    "energy": "Energy",
+    "valence": "Valence",
+    "tempo_bpm": "Tempo",
+    "duration": "Duration",
+}
 
 def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
     """
@@ -127,7 +135,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         wanted = {str(w).strip().lower() for w in wanted}
         if str(value).strip().lower() in wanted:
             score += SCORE_WEIGHTS[key]
-            reasons.append(f"matches your favorite {label} ({value})")
+            reasons.append(f"{label.capitalize()}: {value}")
 
     # Check instrumental preferences
     instrumental_pref = user_prefs.get("instrumental")
@@ -136,7 +144,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         specified_weight += SCORE_WEIGHTS["instrumental"]
         if bool(song_instrumental) == bool(instrumental_pref):
             score += SCORE_WEIGHTS["instrumental"]
-            reasons.append("matches your instrumental preference")
+            reasons.append("Instrumental match")
 
     # --- Numerical features: inverse distance from target ---
     for key in ("energy", "valence", "tempo_bpm", "duration"):
@@ -148,7 +156,7 @@ def score_song(user_prefs: Dict, song: Dict) -> Tuple[float, List[str]]:
         closeness = max(0.0, 1.0 - abs(float(value) - float(target)) / NUMERICAL_RANGES[key])
         score += SCORE_WEIGHTS[key] * closeness
         if closeness >= NUMERICAL_PREF_THRESHOLD:
-            reasons.append(f"close match on {key} ({value} vs your preference of {target})")
+            reasons.append(f"{NUMERICAL_LABELS[key]} match")
 
     # Ensure no divide by zero
     if specified_weight == 0:
@@ -161,6 +169,11 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
     Functional implementation of the recommendation logic.
     Required by src/main.py
     """
-    # TODO: Implement scoring and ranking logic
-    # Expected return format: (song_dict, score, explanation)
-    return []
+    scored = []
+    for song in songs:
+        score, reasons = score_song(user_prefs, song)
+        explanation = ", ".join(reasons) if reasons else "No strong matches"
+        scored.append((song, score, explanation))
+
+    scored.sort(key=lambda item: item[1], reverse=True)
+    return scored[:k]

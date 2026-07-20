@@ -34,6 +34,7 @@ Real recommendation systems work by quantifying items as vectors and using compu
 My design compares song features with users preferences to calculate a recommendation score. The song features I am using include general vibes (artist, genre, mood) and audio characteristics (energy, tempo, valence, instrumental, duration). The UserProfile dataclass stores the user's favorite artist and favorite genres/moods. Additionally, the class stores target energy, tempo, valence, duration, and instrumental preference. 
 
 My recommender computes a score for each song based on the feature type, where categorical features are checked for equality and numerical features are used to compute a distance metric. Each feature also has a weighting, where favorite vibes (artist, genre, mood) will be weighted more than numerical features. In order choose which songs to recommend, the system will choose the ones with the highest score. This may cause a bias towards genre, where the system might ignore good recommendations that match the user's preferred energy and valence levels because of a genre mismatch.
+
 ---
 
 ## Getting Started
@@ -42,21 +43,22 @@ My recommender computes a score for each song based on the feature type, where c
 
 1. Create a virtual environment (optional but recommended):
 
-   ```bash
+ ```bash
    python -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+```
 
 2. Install dependencies
 
 ```bash
-pip install -r requirements.txt
+  pip install -r requirements.txt
 ```
 
 3. Run the app:
 
 ```bash
-python -m src.main
+  python -m src.main
 ```
 
 ### Running Tests
@@ -73,15 +75,23 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
-
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
+Top recommendations:
+
+1. Sunrise City — Neon Echo (87% Match)
+ Reasoning:  Genre: pop, Mood: happy, Instrumental match, Energy match, Valence match, Duration match
+
+2. Super Shy — NewJeans (56% Match)
+ Reasoning:  Mood: happy, Instrumental match, Energy match, Valence match, Duration match
+
+3. Rooftop Lights — Indigo Parade (56% Match)
+ Reasoning:  Mood: happy, Instrumental match, Energy match, Valence match
+
+4. Dynamite — BTS (55% Match)
+ Reasoning:  Mood: happy, Instrumental match, Energy match, Valence match
+
+5. Gym Hero — Max Pulse (55% Match)
+ Reasoning:  Genre: pop, Instrumental match, Energy match, Valence match, Duration match
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->

@@ -25,21 +25,13 @@ def main() -> None:
                     "tempo_bpm": None,
                     "duration": 150,
                    }
-    '''
-    # Used to check if scoring logic is working
-    for song in songs:
-        print(song["title"], score_song(user_prefs=user_prefs, song = song))
-    '''
 
     recommendations = recommend_songs(user_prefs, songs, k=5)
 
     print("\nTop recommendations:\n")
-    for rec in recommendations:
-        # You decide the structure of each returned item.
-        # A common pattern is: (song, score, explanation)
-        song, score, explanation = rec
-        print(f"{song['title']} - Score: {score:.2f}")
-        print(f"Because: {explanation}")
+    for rank, (song, score, explanation) in enumerate(recommendations, start=1):
+        print(f"{rank}. {song['title']} — {song['artist']} ({score:.0%} Match)")
+        print(" Reasoning:", f" {explanation}")
         print()
 
 
