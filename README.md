@@ -76,7 +76,7 @@ You can add more tests in `tests/test_recommender.py`.
 ## Sample Recommendation Output
 
 ```
-Top recommendations:
+ Top recommendations:
 
 1. Sunrise City — Neon Echo (87% Match)
  Reasoning:  Genre: pop, Mood: happy, Instrumental match, Energy match, Valence match, Duration match
@@ -92,6 +92,78 @@ Top recommendations:
 
 5. Gym Hero — Max Pulse (55% Match)
  Reasoning:  Genre: pop, Instrumental match, Energy match, Valence match, Duration match
+
+
+Top recommendations:
+
+1. Midnight Coding — LoRoom (99% Match)
+ Reasoning:  Genre: lofi, Mood: chill, Artist: LoRoom, Instrumental match, Energy match, Valence match, Tempo match, Duration match
+
+2. Library Rain — Paper Lanterns (89% Match)
+ Reasoning:  Genre: lofi, Mood: chill, Instrumental match, Energy match, Valence match, Tempo match, Duration match
+
+3. One Summer's Day — Joe Hisaishi (86% Match)
+ Reasoning:  Genre: orchestral, Mood: peaceful, Instrumental match, Energy match, Valence match, Tempo match, Duration match
+
+4. Spacewalk Thoughts — Orbit Bloom (84% Match)
+ Reasoning:  Genre: ambient, Mood: chill, Instrumental match, Energy match, Valence match, Tempo match
+
+5. Sweden — C418 (84% Match)
+ Reasoning:  Genre: ambient, Mood: peaceful, Instrumental match, Energy match, Valence match, Tempo match
+
+
+Top recommendations:
+
+1. Kick Back — Kenshi Yonezu (84% Match)
+ Reasoning:  Genre: j-rock, Mood: energetic, Energy match, Valence match
+
+2. Dynamite — BTS (65% Match)
+ Reasoning:  Mood: happy, Artist: BTS, Energy match, Valence match, Tempo match
+
+3. Super Shy — NewJeans (56% Match)
+ Reasoning:  Mood: happy, Energy match, Valence match, Tempo match, Duration match
+
+4. Tank! — The Seatbelts (56% Match)
+ Reasoning:  Mood: energetic, Energy match, Valence match, Duration match
+
+5. Sunrise City — Neon Echo (56% Match)
+ Reasoning:  Mood: happy, Energy match, Valence match, Tempo match
+
+
+Top recommendations:
+
+1. Storm Runner — Voltline (97% Match)
+ Reasoning:  Genre: rock, Mood: intense, Artist: Voltline, Instrumental match, Energy match, Valence match, Tempo match, Duration match
+
+2. Gurenge — LiSA (85% Match)
+ Reasoning:  Genre: j-rock, Mood: intense, Instrumental match, Energy match, Valence match, Tempo match
+
+3. Kick Back — Kenshi Yonezu (56% Match)
+ Reasoning:  Genre: j-rock, Instrumental match, Energy match, Tempo match, Duration match
+
+4. Gym Hero — Max Pulse (55% Match)
+ Reasoning:  Mood: intense, Instrumental match, Energy match, Tempo match, Duration match
+
+5. Megalovania — Toby Fox (54% Match)
+ Reasoning:  Mood: intense, Energy match, Valence match, Tempo match, Duration match
+
+
+Top recommendations:
+
+1. Super Shy — NewJeans (99% Match)
+ Reasoning:  Genre: k-pop, Energy match, Valence match
+
+2. Dynamite — BTS (98% Match)
+ Reasoning:  Genre: k-pop, Energy match, Valence match
+
+3. Sunrise City — Neon Echo (97% Match)
+ Reasoning:  Genre: pop, Energy match, Valence match
+
+4. Gym Hero — Max Pulse (97% Match)
+ Reasoning:  Genre: pop, Energy match, Valence match
+
+5. Tank! — The Seatbelts (96% Match)
+ Reasoning:  Genre: jazz, Energy match, Valence match
 ```
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
@@ -102,23 +174,13 @@ Top recommendations:
 
 Use this section to document the experiments you ran. For example:
 
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+One experiment I ran was that I decreased the importance of genre and increased the importance of energy. Surprisingly, the results of the recommendation did not change drastically. Some of the songs in the top 5 shifted slightly, but overall did not change much. I suspect this is due to the fact that I have so many other song features in consideration (tempo, valence, instrumental, duration, etc) that decreases the important of genre and energy (despite those being relatively higher).
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+My recommender is limited by the songs represented in its database as well as its over-prioritization of genre and mood. Since the artist and song selection is limited, choosing genre/mood as a strong weight means that some genres go unseen by the recommender because those features are under a different category, but could be a good match musically. For example, those who only put "rock" as their favorite genre may not get recommended "j-rock" songs, despite those genres being close musically. Additionally, users are allowed to skip multiple fields, so those who are indifferent to genre/mood/energy will not get any interesting recommendations. Similarly, users who enjoy multiple genres with contrasting moods/energies may not get strong recommendations because my system doesn't account for users who enjoy a breadth of genres. 
 
 ---
 

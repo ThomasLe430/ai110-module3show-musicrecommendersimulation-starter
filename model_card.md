@@ -61,29 +61,13 @@ Prompts:
 
 ## 6. Limitations and Bias 
 
-Where the system struggles or behaves unfairly. 
-
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+The system biases towards genre and mood over other musical qualities, overfitting to generic music genres such as pop and rock. This causes adjacent genres to be missed despite having similar musical qualities (ex: rock vs j-rock or lofi vs ambient). Additionally, the system breaks down if a user specifies multiple genres or moods they enjoy. If a user's musical preferences spans all genres present in the dataset, then the recommendation system has a harder time finding stronger matches. 
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
-
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+I evaluated the system by creating multiple user profiles spanning different musical tastes. Each profile prioritized a certain genre: pop, lofi, k-pop, and rock. What surprised me about the tests was that it was super confident for a lot of matches (above 80%) and struck a good balance between genre and mood recommendations. Sometimes I expected a song to rank higher because of its genre, but other songs having a better mood and other characteristics made it rank higher than the genre-consistent song. For example, take the "generic pop enjoyer" versus "asian music enjoyer" profiles. K-pop songs from BTS and NewJeans fell into both of those recommendations due to their mood and valence, even if the genre didn't necessarily match for the "generic pop enjoyer." 
 
 ---
 
