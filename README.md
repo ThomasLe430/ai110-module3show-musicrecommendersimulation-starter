@@ -172,8 +172,6 @@ Top recommendations:
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
-
 One experiment I ran was that I decreased the importance of genre and increased the importance of energy. Surprisingly, the results of the recommendation did not change drastically. Some of the songs in the top 5 shifted slightly, but overall did not change much. I suspect this is due to the fact that I have so many other song features in consideration (tempo, valence, instrumental, duration, etc) that decreases the important of genre and energy (despite those being relatively higher).
 
 ---
@@ -195,5 +193,8 @@ Write 1 to 2 paragraphs here about what you learned:
 - about how recommenders turn data into predictions
 - about where bias or unfairness could show up in systems like this
 
+From this project, I learned about how recommenders turn data into predictions by quantifying user preferences and comparing it against a catalog of available content. My system demonstrated how a simple algorithm - prioritize genre and mood - can fetch relevant recommendations for the user. The numerical features shedded more insight because they presented more unique challenges. For instance, energy and valence can't really be quantified objectively, while tempo and duration are objective but users don't really pay attention to them. My system assumes that energy and valence can be quantified objectively, while real systems have to rely on learned representations and context. I find it really cool how real systems such as the Spotify algorithm use a neural network to learn a numerical representation of a song then use that to compute similarit metrics such as cosine similarity for recommendations.
+
+I can see how bias or unfairness can show up in systems like this based on what they prioritize. For instance, I looked at my own Spotify Discover Weekly playlist and I can see how practically every song is either K-pop, K-rock, or J-rock. Although those genres are what I primarily listen to, Spotify is still struggling to recommend songs outside of these genres that might match the mood I'm craving. It would be cool to see more American rock or indie pop songs that match the vibes of songs I like, even though the language is different. 
 
 
